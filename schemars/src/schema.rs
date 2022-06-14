@@ -106,6 +106,7 @@ pub struct RootSchema {
     /// See [JSON Schema 8.2.5. Schema Re-Use With "$defs"](https://tools.ietf.org/html/draft-handrews-json-schema-02#section-8.2.5),
     /// and [JSON Schema (draft 07) 9. Schema Re-Use With "definitions"](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-9).
     #[serde(alias = "$defs", skip_serializing_if = "Map::is_empty")]
+    // #[serde(rename = "$defs")]
     pub definitions: Map<String, Schema>,
 }
 
@@ -416,12 +417,12 @@ pub struct ArrayValidation {
     ///
     /// See [JSON Schema 9.3.1.1. "items"](https://tools.ietf.org/html/draft-handrews-json-schema-02#section-9.3.1.1).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub items: Option<SingleOrVec<Schema>>,
+    pub prefix_items: Option<Vec<Schema>>,
     /// The `additionalItems` keyword.
     ///
     /// See [JSON Schema 9.3.1.2. "additionalItems"](https://tools.ietf.org/html/draft-handrews-json-schema-02#section-9.3.1.2).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub additional_items: Option<Box<Schema>>,
+    pub items: Option<Box<Schema>>,
     /// The `maxItems` keyword.
     ///
     /// See [JSON Schema Validation 6.4.1. "maxItems"](https://tools.ietf.org/html/draft-handrews-json-schema-validation-02#section-6.4.1).

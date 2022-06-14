@@ -1,9 +1,9 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Set_of_Foo",
   "type": "array",
   "items": {
-    "$ref": "#/definitions/Foo"
+    "$ref": "#/components/schemas/Foo"
   },
   "uniqueItems": true,
   "definitions": {

@@ -1,12 +1,12 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RecursiveOuter",
   "type": "object",
   "properties": {
     "direct": {
       "anyOf": [
         {
-          "$ref": "#/definitions/RecursiveOuter"
+          "$ref": "#/components/schemas/RecursiveOuter"
         },
         {
           "type": "null"
@@ -23,7 +23,7 @@
       ],
       "properties": {
         "recursive": {
-          "$ref": "#/definitions/RecursiveOuter"
+          "$ref": "#/components/schemas/RecursiveOuter"
         }
       }
     }
@@ -35,7 +35,7 @@
         "direct": {
           "anyOf": [
             {
-              "$ref": "#/definitions/RecursiveOuter"
+              "$ref": "#/components/schemas/RecursiveOuter"
             },
             {
               "type": "null"
@@ -52,7 +52,7 @@
           ],
           "properties": {
             "recursive": {
-              "$ref": "#/definitions/RecursiveOuter"
+              "$ref": "#/components/schemas/RecursiveOuter"
             }
           }
         }

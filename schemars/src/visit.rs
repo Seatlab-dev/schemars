@@ -77,8 +77,8 @@ pub fn visit_schema_object<V: Visitor + ?Sized>(v: &mut V, schema: &mut SchemaOb
     }
 
     if let Some(arr) = &mut schema.array {
-        visit_single_or_vec(v, &mut arr.items);
-        visit_box(v, &mut arr.additional_items);
+        visit_vec(v, &mut arr.prefix_items);
+        visit_box(v, &mut arr.items);
         visit_box(v, &mut arr.contains);
     }
 
@@ -110,6 +110,7 @@ fn visit_map_values<V: Visitor + ?Sized>(v: &mut V, target: &mut crate::Map<Stri
     }
 }
 
+#[allow(dead_code)]
 fn visit_single_or_vec<V: Visitor + ?Sized>(v: &mut V, target: &mut Option<SingleOrVec<Schema>>) {
     match target {
         None => {}

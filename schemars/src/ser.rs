@@ -368,7 +368,7 @@ impl serde::ser::SerializeSeq for SerializeSeq<'_> {
         Ok(SchemaObject {
             instance_type: Some(InstanceType::Array.into()),
             array: Some(Box::new(ArrayValidation {
-                items: Some(items.into()),
+                prefix_items: Some(vec![items]),
                 ..ArrayValidation::default()
             })),
             ..SchemaObject::default()
@@ -398,7 +398,7 @@ impl serde::ser::SerializeTuple for SerializeTuple<'_> {
         let mut schema = SchemaObject {
             instance_type: Some(InstanceType::Array.into()),
             array: Some(Box::new(ArrayValidation {
-                items: Some(SingleOrVec::Vec(self.items)),
+                prefix_items: Some(self.items),
                 max_items: len,
                 min_items: len,
                 ..ArrayValidation::default()

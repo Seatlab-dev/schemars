@@ -449,7 +449,7 @@ fn expr_for_tuple_struct(fields: &[Field]) -> TokenStream {
             schemars::schema::SchemaObject {
             instance_type: Some(schemars::schema::InstanceType::Array.into()),
             array: Some(Box::new(schemars::schema::ArrayValidation {
-                items: Some(vec![#(#fields),*].into()),
+                prefix_items: Some(vec![#(#fields),*].into()),
                 max_items: Some(#len),
                 min_items: Some(#len),
                 ..Default::default()

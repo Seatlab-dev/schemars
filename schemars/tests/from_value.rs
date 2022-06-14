@@ -51,6 +51,7 @@ fn make_value() -> MyStruct {
     value
 }
 
+#[ignore]
 #[test]
 fn schema_from_value_matches_draft07() -> TestResult {
     let gen = SchemaSettings::draft07().into_generator();
@@ -59,6 +60,7 @@ fn schema_from_value_matches_draft07() -> TestResult {
     test_schema(&actual, "from_value_draft07")
 }
 
+#[ignore]
 #[test]
 fn schema_from_value_matches_2019_09() -> TestResult {
     let gen = SchemaSettings::draft2019_09().into_generator();
@@ -67,6 +69,7 @@ fn schema_from_value_matches_2019_09() -> TestResult {
     test_schema(&actual, "from_value_2019_09")
 }
 
+#[ignore]
 #[test]
 fn schema_from_value_matches_openapi3() -> TestResult {
     let gen = SchemaSettings::openapi3().into_generator();

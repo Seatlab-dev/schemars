@@ -37,7 +37,7 @@ macro_rules! array_impls {
                     SchemaObject {
                         instance_type: Some(InstanceType::Array.into()),
                         array: Some(Box::new(ArrayValidation {
-                            items: Some(gen.subschema_for::<T>().into()),
+                            prefix_items: Some(vec![gen.subschema_for::<T>()]),
                             max_items: Some($len),
                             min_items: Some($len),
                             ..Default::default()
@@ -73,8 +73,8 @@ mod tests {
         );
         let array_validation = schema.array.unwrap();
         assert_eq!(
-            array_validation.items,
-            Some(SingleOrVec::from(schema_for::<i32>()))
+            array_validation.prefix_items,
+            Some(vec![schema_for::<i32>()])
         );
         assert_eq!(array_validation.max_items, Some(8));
         assert_eq!(array_validation.min_items, Some(8));

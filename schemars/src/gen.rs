@@ -50,12 +50,13 @@ pub struct SchemaSettings {
 
 impl Default for SchemaSettings {
     fn default() -> SchemaSettings {
-        SchemaSettings::draft07()
+        SchemaSettings::openapi3_1()
     }
 }
 
 impl SchemaSettings {
     /// Creates `SchemaSettings` that conform to [JSON Schema Draft 7](https://json-schema.org/specification-links.html#draft-7).
+    #[deprecated]
     pub fn draft07() -> SchemaSettings {
         SchemaSettings {
             option_nullable: false,
@@ -69,6 +70,7 @@ impl SchemaSettings {
     }
 
     /// Creates `SchemaSettings` that conform to [JSON Schema 2019-09](https://json-schema.org/specification-links.html#2019-09-formerly-known-as-draft-8).
+    #[deprecated]
     pub fn draft2019_09() -> SchemaSettings {
         SchemaSettings {
             option_nullable: false,
@@ -81,7 +83,21 @@ impl SchemaSettings {
         }
     }
 
+    /// Creates `SchemaSettings` that conform to an adapted [JSON Schema 2020-12](https://json-schema.org/specification-links.html#2020-12), intending to conform to [OpenAPI 3.1](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.1.0.md#schemaObject).
+    pub fn openapi3_1() -> SchemaSettings {
+        SchemaSettings {
+            option_nullable: false,
+            option_add_null_type: true,
+            definitions_path: "#/components/schemas/".to_owned(),
+            meta_schema: Some("https://json-schema.org/draft/2020-12/schema".to_owned()),
+            visitors: Vec::default(),
+            inline_subschemas: false,
+            _hidden: (),
+        }
+    }
+
     /// Creates `SchemaSettings` that conform to [OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject).
+    #[deprecated]
     pub fn openapi3() -> SchemaSettings {
         SchemaSettings {
             option_nullable: true,

@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "examples": [
     {
       "bool": true,
@@ -30,9 +30,11 @@
       "properties": {
         "array": {
           "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "prefixItems": [
+            {
+              "type": "string"
+            }
+          ]
         }
       }
     },

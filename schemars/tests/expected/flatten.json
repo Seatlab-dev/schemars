@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Flat",
   "type": "object",
   "required": [
@@ -25,10 +25,12 @@
     },
     "v": {
       "type": "array",
-      "items": {
-        "type": "integer",
-        "format": "int32"
-      }
+      "prefixItems": [
+        {
+          "type": "integer",
+          "format": "int32"
+        }
+      ]
     }
   }
 }

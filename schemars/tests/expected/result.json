@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Container",
   "type": "object",
   "required": [
@@ -8,10 +8,10 @@
   ],
   "properties": {
     "result1": {
-      "$ref": "#/definitions/Result_of_MyStruct_or_Array_of_String"
+      "$ref": "#/components/schemas/Result_of_MyStruct_or_Array_of_String"
     },
     "result2": {
-      "$ref": "#/definitions/Result_of_Boolean_or_Null"
+      "$ref": "#/components/schemas/Result_of_Boolean_or_Null"
     }
   },
   "definitions": {
@@ -24,7 +24,7 @@
           ],
           "properties": {
             "Ok": {
-              "$ref": "#/definitions/MyStruct"
+              "$ref": "#/components/schemas/MyStruct"
             }
           }
         },
@@ -36,9 +36,11 @@
           "properties": {
             "Err": {
               "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "prefixItems": [
+                {
+                  "type": "string"
+                }
+              ]
             }
           }
         }

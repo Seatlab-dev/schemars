@@ -97,7 +97,7 @@ impl_merge!(StringValidation {
 });
 
 impl_merge!(ArrayValidation {
-    or: items additional_items max_items min_items unique_items contains,
+    or: prefix_items items max_items min_items unique_items contains,
 });
 
 impl_merge!(ObjectValidation {

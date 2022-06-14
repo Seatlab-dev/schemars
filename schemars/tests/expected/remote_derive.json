@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Process",
   "type": "object",
   "required": [
@@ -11,26 +11,18 @@
       "type": "string"
     },
     "wall_time": {
-      "$ref": "#/definitions/Duration"
+      "$ref": "#/components/schemas/Duration"
     },
     "user_cpu_time": {
       "default": {
         "nanos": 0,
         "secs": 0
       },
-      "allOf": [
-        {
-          "$ref": "#/definitions/Duration"
-        }
-      ]
+      "$ref": "#/components/schemas/Duration"
     },
     "system_cpu_time": {
       "default": "0.000000000s",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Duration"
-        }
-      ]
+      "$ref": "#/components/schemas/Duration"
     }
   },
   "definitions": {

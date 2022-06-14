@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "MyStruct_for_int32",
   "type": "object",
   "required": [
@@ -10,21 +10,23 @@
   ],
   "properties": {
     "byte_or_bool2": {
-      "$ref": "#/definitions/Or_for_uint8_and_Boolean"
+      "$ref": "#/components/schemas/Or_for_uint8_and_Boolean"
     },
     "unit_or_t2": {
-      "$ref": "#/definitions/Or_for_Null_and_int32"
+      "$ref": "#/components/schemas/Or_for_Null_and_int32"
     },
     "s": {
-      "$ref": "#/definitions/Str"
+      "$ref": "#/components/schemas/Str"
     },
     "fake_map": {
       "type": "object",
       "additionalProperties": {
         "type": "array",
-        "items": {
-          "type": "string"
-        },
+        "prefixItems": [
+          {
+            "type": "string"
+          }
+        ],
         "uniqueItems": true
       }
     }

@@ -18,7 +18,7 @@ macro_rules! seq_impl {
                 SchemaObject {
                     instance_type: Some(InstanceType::Array.into()),
                     array: Some(Box::new(ArrayValidation {
-                        items: Some(gen.subschema_for::<T>().into()),
+                        prefix_items: Some(vec![gen.subschema_for::<T>()]),
                         ..Default::default()
                     })),
                     ..Default::default()
@@ -46,7 +46,7 @@ macro_rules! set_impl {
                     instance_type: Some(InstanceType::Array.into()),
                     array: Some(Box::new(ArrayValidation {
                         unique_items: Some(true),
-                        items: Some(gen.subschema_for::<T>().into()),
+                        prefix_items: Some(vec![gen.subschema_for::<T>()]),
                         ..Default::default()
                     })),
                     ..Default::default()
