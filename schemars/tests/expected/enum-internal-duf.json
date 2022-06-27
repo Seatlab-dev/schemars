@@ -18,6 +18,10 @@
       "additionalProperties": false
     },
     {
+      "description": "Map of [String](#section/String) to [String](#section/String).\n\n Please Check the type sections for more information.",
+      "examples": [
+        {}
+      ],
       "type": "object",
       "required": [
         "typeProperty"
@@ -30,7 +34,12 @@
           ]
         }
       },
-      "additionalProperties": {
+      "patternProperties": {
+        "": {
+          "type": "string"
+        }
+      },
+      "propertyNames": {
         "type": "string"
       }
     },

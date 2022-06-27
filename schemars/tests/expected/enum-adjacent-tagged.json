@@ -24,10 +24,7 @@
       ],
       "properties": {
         "c": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
+          "$ref": "#/components/schemas/Map_of_String_to_String"
         },
         "t": {
           "type": "string",
@@ -168,6 +165,21 @@
     }
   ],
   "definitions": {
+    "Map_of_String_to_String": {
+      "description": "Map of [String](#section/String) to [String](#section/String).\n\n Please Check the type sections for more information.",
+      "examples": [
+        {}
+      ],
+      "type": "object",
+      "patternProperties": {
+        "": {
+          "type": "string"
+        }
+      },
+      "propertyNames": {
+        "type": "string"
+      }
+    },
     "Struct": {
       "type": "object",
       "required": [

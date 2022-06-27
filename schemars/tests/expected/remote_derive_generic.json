@@ -12,37 +12,37 @@
     "byte_or_bool2": {
       "$ref": "#/components/schemas/Or_for_uint8_and_Boolean"
     },
-    "unit_or_t2": {
-      "$ref": "#/components/schemas/Or_for_Null_and_int32"
+    "fake_map": {
+      "$ref": "#/components/schemas/Map_of_String_to_Set_of_String"
     },
     "s": {
       "$ref": "#/components/schemas/Str"
     },
-    "fake_map": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "array",
-        "prefixItems": [
-          {
-            "type": "string"
-          }
-        ],
-        "uniqueItems": true
-      }
+    "unit_or_t2": {
+      "$ref": "#/components/schemas/Or_for_Null_and_int32"
     }
   },
   "definitions": {
-    "Or_for_uint8_and_Boolean": {
-      "anyOf": [
-        {
-          "type": "integer",
-          "format": "uint8",
-          "minimum": 0.0
-        },
-        {
-          "type": "boolean"
+    "Map_of_String_to_Set_of_String": {
+      "description": "Map of [String](#section/String) to [Set_of_String](#section/Set_of_String).\n\n Please Check the type sections for more information.",
+      "examples": [
+        {}
+      ],
+      "type": "object",
+      "patternProperties": {
+        "": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "string"
+            }
+          ],
+          "uniqueItems": true
         }
-      ]
+      },
+      "propertyNames": {
+        "type": "string"
+      }
     },
     "Or_for_Null_and_int32": {
       "anyOf": [
@@ -52,6 +52,18 @@
         {
           "type": "integer",
           "format": "int32"
+        }
+      ]
+    },
+    "Or_for_uint8_and_Boolean": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "format": "uint8",
+          "minimum": 0.0
+        },
+        {
+          "type": "boolean"
         }
       ]
     },

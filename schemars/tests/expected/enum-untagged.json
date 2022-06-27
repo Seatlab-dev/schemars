@@ -6,10 +6,7 @@
       "type": "null"
     },
     {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "$ref": "#/components/schemas/Map_of_String_to_String"
     },
     {
       "$ref": "#/components/schemas/UnitStruct"
@@ -24,12 +21,12 @@
         "foo"
       ],
       "properties": {
+        "bar": {
+          "type": "boolean"
+        },
         "foo": {
           "type": "integer",
           "format": "int32"
-        },
-        "bar": {
-          "type": "boolean"
         }
       }
     },
@@ -53,8 +50,20 @@
     }
   ],
   "definitions": {
-    "UnitStruct": {
-      "type": "null"
+    "Map_of_String_to_String": {
+      "description": "Map of [String](#section/String) to [String](#section/String).\n\n Please Check the type sections for more information.",
+      "examples": [
+        {}
+      ],
+      "type": "object",
+      "patternProperties": {
+        "": {
+          "type": "string"
+        }
+      },
+      "propertyNames": {
+        "type": "string"
+      }
     },
     "Struct": {
       "type": "object",
@@ -63,14 +72,17 @@
         "foo"
       ],
       "properties": {
+        "bar": {
+          "type": "boolean"
+        },
         "foo": {
           "type": "integer",
           "format": "int32"
-        },
-        "bar": {
-          "type": "boolean"
         }
       }
+    },
+    "UnitStruct": {
+      "type": "null"
     }
   }
 }
